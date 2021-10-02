@@ -1,0 +1,910 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="Model" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="ACOMPAÑANTE">
+    <Key>
+      <PropertyRef Name="ID_ACOMPAÑANTE" />
+    </Key>
+    <Property Name="ID_ACOMPAÑANTE" Type="Decimal" Precision="38" Scale="0" Nullable="false" />
+    <Property Name="NOMBRE_ACOMPAÑANTE" Type="String" MaxLength="45" FixedLength="false" Unicode="false" />
+    <Property Name="APELLIDO_ACOMPAÑANTE" Type="String" MaxLength="45" FixedLength="false" Unicode="false" />
+    <Property Name="RANGO_ETARIO" Type="String" MaxLength="45" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="DETALLE_ACOMPAÑANTE" Relationship="Self.DETALLE_ACOMPAÑANTE_ACOMPAÑANTE_FK" FromRole="ACOMPAÑANTE" ToRole="DETALLE_ACOMPAÑANTE" />
+  </EntityType>
+  <EntityType Name="CHECK_OUT">
+    <Key>
+      <PropertyRef Name="ID_CHECK_OUT" />
+    </Key>
+    <Property Name="ID_CHECK_OUT" Type="Decimal" Precision="38" Scale="0" Nullable="false" />
+    <Property Name="ESTADO_HABITACION" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="MULTA" Type="Decimal" Precision="38" Scale="0" />
+    <Property Name="COSTO_REPARACION" Type="Decimal" Precision="38" Scale="0" />
+    <Property Name="DESCRIPCION" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="DETALLE_CHECKOUT" Relationship="Self.DETALLE_CHECK_OUT_CHECK_OUT_FK" FromRole="CHECK_OUT" ToRole="DETALLE_CHECKOUT" />
+  </EntityType>
+  <EntityType Name="CHECKLIST_ESTADO_INVENTARIO">
+    <Key>
+      <PropertyRef Name="ID_CHECK_LIST" />
+    </Key>
+    <Property Name="ID_CHECK_LIST" Type="Decimal" Precision="38" Scale="0" Nullable="false" />
+    <Property Name="ESTADO_CHECK_LIST" Type="String" MaxLength="45" FixedLength="false" Unicode="false" />
+    <Property Name="OBJETO_HABITACION_ID_OBJETO_HABITACION" Type="Decimal" Precision="38" Scale="0" Nullable="false" />
+    <NavigationProperty Name="OBJETO_HABITACION" Relationship="Self.CHECKLIST_ESTADO_INVENTARIO_OBJETO_HABITACION_FK" FromRole="CHECKLIST_ESTADO_INVENTARIO" ToRole="OBJETO_HABITACION" />
+  </EntityType>
+  <EntityType Name="COMUNA">
+    <Key>
+      <PropertyRef Name="ID_COMUNA" />
+      <PropertyRef Name="PROVINCIA_ID_PROVINCIA" />
+      <PropertyRef Name="PROVINCIA_REGION_ID_REGION" />
+    </Key>
+    <Property Name="ID_COMUNA" Type="Decimal" Precision="38" Scale="0" Nullable="false" />
+    <Property Name="NOMBRE_COMUNA" Type="String" MaxLength="45" FixedLength="false" Unicode="false" />
+    <Property Name="PROVINCIA_ID_PROVINCIA" Type="Decimal" Precision="38" Scale="0" Nullable="false" />
+    <Property Name="PROVINCIA_REGION_ID_REGION" Type="Decimal" Precision="38" Scale="0" Nullable="false" />
+    <NavigationProperty Name="PROVINCIA" Relationship="Self.COMUNA_PROVINCIA_FK" FromRole="COMUNA" ToRole="PROVINCIA" />
+    <NavigationProperty Name="DEPARTAMENTO" Relationship="Self.DEPARTAMENTO_COMUNA_FK" FromRole="COMUNA" ToRole="DEPARTAMENTO" />
+  </EntityType>
+  <EntityType Name="CONDUCTOR">
+    <Key>
+      <PropertyRef Name="RUT_CONDUCTOR" />
+    </Key>
+    <Property Name="RUT_CONDUCTOR" Type="String" MaxLength="15" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="NOMBRE_CONDUCTOR" Type="String" MaxLength="45" FixedLength="false" Unicode="false" />
+    <Property Name="APELLIDO_CONDUCTOR" Type="String" MaxLength="45" FixedLength="false" Unicode="false" />
+    <Property Name="TRANSPORTE_ID_TRANSPORTE" Type="Decimal" Precision="38" Scale="0" Nullable="false" />
+    <NavigationProperty Name="TRANSPORTE" Relationship="Self.CONDUCTOR_TRANSPORTE_FK" FromRole="CONDUCTOR" ToRole="TRANSPORTE" />
+    <NavigationProperty Name="VEHICULO" Relationship="Self.VEHICULO_CONDUCTOR_FK" FromRole="CONDUCTOR" ToRole="VEHICULO" />
+  </EntityType>
+  <EntityType Name="CONTRATO">
+    <Key>
+      <PropertyRef Name="ID_CONTRATO" />
+      <PropertyRef Name="PROVEEDOR_ID_PROVEEDOR" />
+    </Key>
+    <Property Name="ID_CONTRATO" Type="Decimal" Precision="38" Scale="0" Nullable="false" />
+    <Property Name="FECHA_INICIO_CONTRATO" Type="DateTime" />
+    <Property Name="FECHA_TERMINO_CONTRATO" Type="DateTime" />
+    <Property Name="PROVEEDOR_ID_PROVEEDOR" Type="String" MaxLength="15" FixedLength="false" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="PROVEEDOR" Relationship="Self.CONTRATO_PROVEEDOR_FK" FromRole="CONTRATO" ToRole="PROVEEDOR" />
+    <NavigationProperty Name="SERVICIO" Relationship="Self.SERVICIO_CONTRATO_FK" FromRole="CONTRATO" ToRole="SERVICIO" />
+  </EntityType>
+  <EntityType Name="CUENTA_USUARIO">
+    <Key>
+      <PropertyRef Name="ID_CUENTA_USUARIO" />
+    </Key>
+    <Property Name="ID_CUENTA_USUARIO" Type="Decimal" Precision="38" Scale="0" Nullable="false" />
+    <Property Name="EMAIL_USUARIO" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="PASSWORD_USUARIO" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="FECHA_CREACION" Type="DateTime" />
+    <Property Name="TIPO_USUARIO_ID_TIPO_USUARIO" Type="Decimal" Precision="38" Scale="0" Nullable="false" />
+    <NavigationProperty Name="TIPO_USUARIO" Relationship="Self.CUENTA_USUARIO_TIPO_USUARIO_FK" FromRole="CUENTA_USUARIO" ToRole="TIPO_USUARIO" />
+    <NavigationProperty Name="USUARIO" Relationship="Self.USUARIO_CUENTA_USUARIO_FK" FromRole="CUENTA_USUARIO" ToRole="USUARIO" />
+  </EntityType>
+  <EntityType Name="DEPARTAMENTO">
+    <Key>
+      <PropertyRef Name="ID_DEPARTAMENTO" />
+    </Key>
+    <Property Name="ID_DEPARTAMENTO" Type="Decimal" Precision="38" Scale="0" Nullable="false" />
+    <Property Name="DIRECCION" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="COSTO_DEPARTAMENTO" Type="Decimal" Precision="38" Scale="0" />
+    <Property Name="ESTADO_DEPARTAMENTO" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="DESCRIPCION_ESTADO_DEPARTAMENTO" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="ORIENTACION_DEPARTAMENTO" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="ESTACIONAMIENTO" Type="String" MaxLength="2" FixedLength="false" Unicode="false" />
+    <Property Name="NUM_HABITACIONES" Type="Decimal" Precision="38" Scale="0" />
+    <Property Name="NUM_BAÑO" Type="Decimal" Precision="38" Scale="0" />
+    <Property Name="NUM_ESTACIONAMIENTO" Type="Decimal" Precision="38" Scale="0" />
+    <Property Name="COMUNA_ID_COMUNA" Type="Decimal" Precision="38" Scale="0" Nullable="false" />
+    <Property Name="COMUNA_PROVINCIA_ID_PROVINCIA" Type="Decimal" Precision="38" Scale="0" Nullable="false" />
+    <Property Name="COMUNA_PROVINCIA_REGION_ID_REGION" Type="Decimal" Precision="38" Scale="0" Nullable="false" />
+    <NavigationProperty Name="COMUNA" Relationship="Self.DEPARTAMENTO_COMUNA_FK" FromRole="DEPARTAMENTO" ToRole="COMUNA" />
+    <NavigationProperty Name="DETALLE_IMPUESTO" Relationship="Self.DETALLE_IMPUESTO_DEPARTAMENTO_FK" FromRole="DEPARTAMENTO" ToRole="DETALLE_IMPUESTO" />
+    <NavigationProperty Name="DETALLE_INVENTARIO" Relationship="Self.DETALLE_INVENTARIO_DEPARTAMENTO_FK" FromRole="DEPARTAMENTO" ToRole="DETALLE_INVENTARIO" />
+    <NavigationProperty Name="DETALLE_MANTENCION" Relationship="Self.DETALLE_MANTENCION_DEPARTAMENTO_FK" FromRole="DEPARTAMENTO" ToRole="DETALLE_MANTENCION" />
+    <NavigationProperty Name="DETALLE_RESERVA" Relationship="Self.DETALLE_RESERVA_DEPARTAMENTO_FK" FromRole="DEPARTAMENTO" ToRole="DETALLE_RESERVA" />
+  </EntityType>
+  <EntityType Name="DETALLE_ACOMPAÑANTE">
+    <Key>
+      <PropertyRef Name="ID_DETALLE_ACOMPAÑANTE" />
+    </Key>
+    <Property Name="ID_DETALLE_ACOMPAÑANTE" Type="Decimal" Precision="38" Scale="0" Nullable="false" />
+    <Property Name="ACOMPAÑANTE_ID_ACOMPAÑANTE" Type="Decimal" Precision="38" Scale="0" Nullable="false" />
+    <Property Name="USUARIO_RUT_USUARIO" Type="String" MaxLength="15" FixedLength="false" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="ACOMPAÑANTE" Relationship="Self.DETALLE_ACOMPAÑANTE_ACOMPAÑANTE_FK" FromRole="DETALLE_ACOMPAÑANTE" ToRole="ACOMPAÑANTE" />
+    <NavigationProperty Name="USUARIO" Relationship="Self.DETALLE_ACOMPAÑANTE_USUARIO_FK" FromRole="DETALLE_ACOMPAÑANTE" ToRole="USUARIO" />
+  </EntityType>
+  <EntityType Name="DETALLE_CHECKOUT">
+    <Key>
+      <PropertyRef Name="ID_DETALLE_CHECKOUT" />
+    </Key>
+    <Property Name="ID_DETALLE_CHECKOUT" Type="Decimal" Precision="38" Scale="0" Nullable="false" />
+    <Property Name="RESERVA_ID_RESERVA" Type="Decimal" Precision="38" Scale="0" />
+    <Property Name="CHECK_OUT_ID_CHECK_OUT" Type="Decimal" Precision="38" Scale="0" />
+    <NavigationProperty Name="CHECK_OUT" Relationship="Self.DETALLE_CHECK_OUT_CHECK_OUT_FK" FromRole="DETALLE_CHECKOUT" ToRole="CHECK_OUT" />
+    <NavigationProperty Name="RESERVA" Relationship="Self.DETALLE_CHECK_OUT_RESERVA_FK" FromRole="DETALLE_CHECKOUT" ToRole="RESERVA" />
+  </EntityType>
+  <EntityType Name="DETALLE_IMPUESTO">
+    <Key>
+      <PropertyRef Name="ID_DETALLE_IMPUESTO" />
+    </Key>
+    <Property Name="ID_DETALLE_IMPUESTO" Type="Decimal" Precision="38" Scale="0" Nullable="false" />
+    <Property Name="IMPUESTO_ID_IMPUESTO" Type="Decimal" Precision="38" Scale="0" Nullable="false" />
+    <Property Name="DEPARTAMENTO_ID_DEPARTAMENTO" Type="Decimal" Precision="38" Scale="0" Nullable="false" />
+    <NavigationProperty Name="DEPARTAMENTO" Relationship="Self.DETALLE_IMPUESTO_DEPARTAMENTO_FK" FromRole="DETALLE_IMPUESTO" ToRole="DEPARTAMENTO" />
+    <NavigationProperty Name="IMPUESTO" Relationship="Self.DETALLE_IMPUESTO_IMPUESTO_FK" FromRole="DETALLE_IMPUESTO" ToRole="IMPUESTO" />
+  </EntityType>
+  <EntityType Name="DETALLE_INVENTARIO">
+    <Key>
+      <PropertyRef Name="ID_DETALLE_INVENTARIO" />
+    </Key>
+    <Property Name="ID_DETALLE_INVENTARIO" Type="Decimal" Precision="38" Scale="0" Nullable="false" />
+    <Property Name="OBJETO_HABITACION_ID_OBJETO_HABITACION" Type="Decimal" Precision="38" Scale="0" Nullable="false" />
+    <Property Name="DEPARTAMENTO_ID_DEPARTAMENTO" Type="Decimal" Precision="38" Scale="0" Nullable="false" />
+    <NavigationProperty Name="DEPARTAMENTO" Relationship="Self.DETALLE_INVENTARIO_DEPARTAMENTO_FK" FromRole="DETALLE_INVENTARIO" ToRole="DEPARTAMENTO" />
+    <NavigationProperty Name="OBJETO_HABITACION" Relationship="Self.DETALLE_INVENTARIO_OBJETO_HABITACION_FK" FromRole="DETALLE_INVENTARIO" ToRole="OBJETO_HABITACION" />
+  </EntityType>
+  <EntityType Name="DETALLE_MANTENCION">
+    <Key>
+      <PropertyRef Name="ID_DETALLE_MANTENCION" />
+    </Key>
+    <Property Name="ID_DETALLE_MANTENCION" Type="Decimal" Precision="38" Scale="0" Nullable="false" />
+    <Property Name="MANTENCION_ID_MANTENCION" Type="Decimal" Precision="38" Scale="0" Nullable="false" />
+    <Property Name="DEPARTAMENTO_ID_DEPARTAMENTO" Type="Decimal" Precision="38" Scale="0" Nullable="false" />
+    <NavigationProperty Name="DEPARTAMENTO" Relationship="Self.DETALLE_MANTENCION_DEPARTAMENTO_FK" FromRole="DETALLE_MANTENCION" ToRole="DEPARTAMENTO" />
+    <NavigationProperty Name="MANTENCION" Relationship="Self.DETALLE_MANTENCION_MANTENCION_FK" FromRole="DETALLE_MANTENCION" ToRole="MANTENCION" />
+  </EntityType>
+  <EntityType Name="DETALLE_RESERVA">
+    <Key>
+      <PropertyRef Name="ID_DETALLE_RESERVA" />
+    </Key>
+    <Property Name="ID_DETALLE_RESERVA" Type="Decimal" Precision="38" Scale="0" Nullable="false" />
+    <Property Name="RESERVA_ID_RESERVA" Type="Decimal" Precision="38" Scale="0" Nullable="false" />
+    <Property Name="DEPARTAMENTO_ID_DEPARTAMENTO" Type="Decimal" Precision="38" Scale="0" Nullable="false" />
+    <NavigationProperty Name="DEPARTAMENTO" Relationship="Self.DETALLE_RESERVA_DEPARTAMENTO_FK" FromRole="DETALLE_RESERVA" ToRole="DEPARTAMENTO" />
+    <NavigationProperty Name="RESERVA" Relationship="Self.DETALLE_RESERVA_RESERVA_FK" FromRole="DETALLE_RESERVA" ToRole="RESERVA" />
+  </EntityType>
+  <EntityType Name="DETALLE_SERVICIO_EXTRA">
+    <Key>
+      <PropertyRef Name="ID_DETALLE_SERVICIO_EXTRA" />
+    </Key>
+    <Property Name="ID_DETALLE_SERVICIO_EXTRA" Type="Decimal" Precision="38" Scale="0" Nullable="false" />
+    <Property Name="SERVICIO_ID_SERVICIO" Type="Decimal" Precision="38" Scale="0" Nullable="false" />
+    <Property Name="SERVICIO_CONTRATO_ID_CONTRATO" Type="Decimal" Precision="38" Scale="0" Nullable="false" />
+    <Property Name="SERVICIO_CONTRATO_PROVEEDOR_ID_PROVEEDOR" Type="String" MaxLength="15" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="RESERVA_ID_RESERVA" Type="Decimal" Precision="38" Scale="0" Nullable="false" />
+    <NavigationProperty Name="RESERVA" Relationship="Self.DETALLE_SERVICIO_EXTRA_RESERVA_FK" FromRole="DETALLE_SERVICIO_EXTRA" ToRole="RESERVA" />
+    <NavigationProperty Name="SERVICIO" Relationship="Self.DETALLE_SERVICIO_EXTRA_SERVICIO_FK" FromRole="DETALLE_SERVICIO_EXTRA" ToRole="SERVICIO" />
+  </EntityType>
+  <EntityType Name="DETALLE_TOUR">
+    <Key>
+      <PropertyRef Name="ID_DETALLE_TOUR" />
+    </Key>
+    <Property Name="ID_DETALLE_TOUR" Type="Decimal" Precision="38" Scale="0" Nullable="false" />
+    <Property Name="RESERVA_ID_RESERVA" Type="Decimal" Precision="38" Scale="0" Nullable="false" />
+    <Property Name="TOUR_ID_TOUR" Type="Decimal" Precision="38" Scale="0" Nullable="false" />
+    <NavigationProperty Name="RESERVA" Relationship="Self.DETALLE_TOUR_RESERVA_FK" FromRole="DETALLE_TOUR" ToRole="RESERVA" />
+    <NavigationProperty Name="TOUR" Relationship="Self.DETALLE_TOUR_TOUR_FK" FromRole="DETALLE_TOUR" ToRole="TOUR" />
+  </EntityType>
+  <EntityType Name="ESTADO_PAGO">
+    <Key>
+      <PropertyRef Name="ID_ESTADO_PAGO" />
+    </Key>
+    <Property Name="ID_ESTADO_PAGO" Type="Decimal" Precision="38" Scale="0" Nullable="false" />
+    <Property Name="ESTADO_PAGO1" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="PAGO" Relationship="Self.PAGO_ESTADO_PAGO_FK" FromRole="ESTADO_PAGO" ToRole="PAGO" />
+  </EntityType>
+  <EntityType Name="IMPUESTO">
+    <Key>
+      <PropertyRef Name="ID_IMPUESTO" />
+    </Key>
+    <Property Name="ID_IMPUESTO" Type="Decimal" Precision="38" Scale="0" Nullable="false" />
+    <Property Name="MONTO_CONTRIBUCION" Type="Decimal" Precision="38" Scale="0" />
+    <Property Name="MONTO_DIVIDENDO" Type="Decimal" Precision="38" Scale="0" />
+    <NavigationProperty Name="DETALLE_IMPUESTO" Relationship="Self.DETALLE_IMPUESTO_IMPUESTO_FK" FromRole="IMPUESTO" ToRole="DETALLE_IMPUESTO" />
+  </EntityType>
+  <EntityType Name="MANTENCION">
+    <Key>
+      <PropertyRef Name="ID_MANTENCION" />
+    </Key>
+    <Property Name="ID_MANTENCION" Type="Decimal" Precision="38" Scale="0" Nullable="false" />
+    <Property Name="FECHA_INICIO_MANTENCION" Type="DateTime" />
+    <Property Name="FECHA_TERMINO_MANTENCION" Type="DateTime" />
+    <Property Name="COSTO_MANTENCION" Type="Decimal" Precision="38" Scale="0" />
+    <NavigationProperty Name="DETALLE_MANTENCION" Relationship="Self.DETALLE_MANTENCION_MANTENCION_FK" FromRole="MANTENCION" ToRole="DETALLE_MANTENCION" />
+  </EntityType>
+  <EntityType Name="OBJETO_HABITACION">
+    <Key>
+      <PropertyRef Name="ID_OBJETO_HABITACION" />
+    </Key>
+    <Property Name="ID_OBJETO_HABITACION" Type="Decimal" Precision="38" Scale="0" Nullable="false" />
+    <Property Name="NOMBRE_OBJETO" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="integer" Type="Decimal" Precision="38" Scale="0" />
+    <Property Name="CATEGORIA_OBJETO" Type="String" MaxLength="45" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="CHECKLIST_ESTADO_INVENTARIO" Relationship="Self.CHECKLIST_ESTADO_INVENTARIO_OBJETO_HABITACION_FK" FromRole="OBJETO_HABITACION" ToRole="CHECKLIST_ESTADO_INVENTARIO" />
+    <NavigationProperty Name="DETALLE_INVENTARIO" Relationship="Self.DETALLE_INVENTARIO_OBJETO_HABITACION_FK" FromRole="OBJETO_HABITACION" ToRole="DETALLE_INVENTARIO" />
+  </EntityType>
+  <EntityType Name="PAGO">
+    <Key>
+      <PropertyRef Name="ID_PAGO" />
+    </Key>
+    <Property Name="ID_PAGO" Type="Decimal" Precision="38" Scale="0" Nullable="false" />
+    <Property Name="FORMA_PAGO" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="MONTO_PAGO" Type="Decimal" Precision="38" Scale="0" />
+    <Property Name="FECHA_PAGO" Type="DateTime" />
+    <Property Name="ESTADO_PAGO_ID_ESTADO_PAGO" Type="Decimal" Precision="38" Scale="0" Nullable="false" />
+    <Property Name="RESERVA_ID_RESERVA" Type="Decimal" Precision="38" Scale="0" Nullable="false" />
+    <NavigationProperty Name="ESTADO_PAGO" Relationship="Self.PAGO_ESTADO_PAGO_FK" FromRole="PAGO" ToRole="ESTADO_PAGO" />
+    <NavigationProperty Name="RESERVA" Relationship="Self.PAGO_RESERVA_FK" FromRole="PAGO" ToRole="RESERVA" />
+  </EntityType>
+  <EntityType Name="PROVEEDOR">
+    <Key>
+      <PropertyRef Name="ID_PROVEEDOR" />
+    </Key>
+    <Property Name="ID_PROVEEDOR" Type="String" MaxLength="15" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="NOMBRE_PROVEEDOR" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="CONTRATO" Relationship="Self.CONTRATO_PROVEEDOR_FK" FromRole="PROVEEDOR" ToRole="CONTRATO" />
+  </EntityType>
+  <EntityType Name="PROVINCIA">
+    <Key>
+      <PropertyRef Name="ID_PROVINCIA" />
+      <PropertyRef Name="REGION_ID_REGION" />
+    </Key>
+    <Property Name="ID_PROVINCIA" Type="Decimal" Precision="38" Scale="0" Nullable="false" />
+    <Property Name="NOMBRE_PROVINCIA" Type="String" MaxLength="45" FixedLength="false" Unicode="false" />
+    <Property Name="REGION_ID_REGION" Type="Decimal" Precision="38" Scale="0" Nullable="false" />
+    <NavigationProperty Name="COMUNA" Relationship="Self.COMUNA_PROVINCIA_FK" FromRole="PROVINCIA" ToRole="COMUNA" />
+    <NavigationProperty Name="REGION" Relationship="Self.PROVINCIA_REGION_FK" FromRole="PROVINCIA" ToRole="REGION" />
+  </EntityType>
+  <EntityType Name="REGION">
+    <Key>
+      <PropertyRef Name="ID_REGION" />
+    </Key>
+    <Property Name="ID_REGION" Type="Decimal" Precision="38" Scale="0" Nullable="false" />
+    <Property Name="NOMBRE_REGION" Type="String" MaxLength="45" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="PROVINCIA" Relationship="Self.PROVINCIA_REGION_FK" FromRole="REGION" ToRole="PROVINCIA" />
+  </EntityType>
+  <EntityType Name="RESERVA">
+    <Key>
+      <PropertyRef Name="ID_RESERVA" />
+    </Key>
+    <Property Name="ID_RESERVA" Type="Decimal" Precision="38" Scale="0" Nullable="false" />
+    <Property Name="FECHA_ENTRADA" Type="DateTime" />
+    <Property Name="FECHA_SALIDA" Type="DateTime" />
+    <Property Name="FIRMA_CONFORMIDAD_CLIENTE" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="USUARIO_ID_USUARIO" Type="String" MaxLength="15" FixedLength="false" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="DETALLE_CHECKOUT" Relationship="Self.DETALLE_CHECK_OUT_RESERVA_FK" FromRole="RESERVA" ToRole="DETALLE_CHECKOUT" />
+    <NavigationProperty Name="DETALLE_RESERVA" Relationship="Self.DETALLE_RESERVA_RESERVA_FK" FromRole="RESERVA" ToRole="DETALLE_RESERVA" />
+    <NavigationProperty Name="DETALLE_SERVICIO_EXTRA" Relationship="Self.DETALLE_SERVICIO_EXTRA_RESERVA_FK" FromRole="RESERVA" ToRole="DETALLE_SERVICIO_EXTRA" />
+    <NavigationProperty Name="DETALLE_TOUR" Relationship="Self.DETALLE_TOUR_RESERVA_FK" FromRole="RESERVA" ToRole="DETALLE_TOUR" />
+    <NavigationProperty Name="PAGO" Relationship="Self.PAGO_RESERVA_FK" FromRole="RESERVA" ToRole="PAGO" />
+    <NavigationProperty Name="USUARIO" Relationship="Self.RESERVA_USUARIO_FK" FromRole="RESERVA" ToRole="USUARIO" />
+    <NavigationProperty Name="TRANSPORTE" Relationship="Self.TRANSPORTE_RESERVA_FK" FromRole="RESERVA" ToRole="TRANSPORTE" />
+  </EntityType>
+  <EntityType Name="SERVICIO">
+    <Key>
+      <PropertyRef Name="ID_SERVICIO" />
+      <PropertyRef Name="CONTRATO_ID_CONTRATO" />
+      <PropertyRef Name="CONTRATO_PROVEEDOR_ID_PROVEEDOR" />
+    </Key>
+    <Property Name="ID_SERVICIO" Type="Decimal" Precision="38" Scale="0" Nullable="false" />
+    <Property Name="NOMBRE_SERVICIO" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="FECHA_SERVICIO" Type="DateTime" />
+    <Property Name="CONTRATO_ID_CONTRATO" Type="Decimal" Precision="38" Scale="0" Nullable="false" />
+    <Property Name="CONTRATO_PROVEEDOR_ID_PROVEEDOR" Type="String" MaxLength="15" FixedLength="false" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="CONTRATO" Relationship="Self.SERVICIO_CONTRATO_FK" FromRole="SERVICIO" ToRole="CONTRATO" />
+    <NavigationProperty Name="DETALLE_SERVICIO_EXTRA" Relationship="Self.DETALLE_SERVICIO_EXTRA_SERVICIO_FK" FromRole="SERVICIO" ToRole="DETALLE_SERVICIO_EXTRA" />
+  </EntityType>
+  <EntityType Name="TIPO_USUARIO">
+    <Key>
+      <PropertyRef Name="ID_TIPO_USUARIO" />
+    </Key>
+    <Property Name="ID_TIPO_USUARIO" Type="Decimal" Precision="38" Scale="0" Nullable="false" />
+    <Property Name="NOMBRE_TIPO_USUARIO" Type="String" MaxLength="45" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="TIPO_PERFIL" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="CUENTA_USUARIO" Relationship="Self.CUENTA_USUARIO_TIPO_USUARIO_FK" FromRole="TIPO_USUARIO" ToRole="CUENTA_USUARIO" />
+  </EntityType>
+  <EntityType Name="TOUR">
+    <Key>
+      <PropertyRef Name="ID_TOUR" />
+    </Key>
+    <Property Name="ID_TOUR" Type="Decimal" Precision="38" Scale="0" Nullable="false" />
+    <Property Name="NOMBRE_TOUR" Type="String" MaxLength="45" FixedLength="false" Unicode="false" />
+    <Property Name="FECHA_TOUR" Type="DateTime" />
+    <Property Name="COSTO_TOUR" Type="Decimal" Precision="38" Scale="0" />
+    <Property Name="DESCRIPCION_TOUR" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="DETALLE_TOUR" Relationship="Self.DETALLE_TOUR_TOUR_FK" FromRole="TOUR" ToRole="DETALLE_TOUR" />
+  </EntityType>
+  <EntityType Name="TRANSPORTE">
+    <Key>
+      <PropertyRef Name="ID_TRANSPORTE" />
+    </Key>
+    <Property Name="ID_TRANSPORTE" Type="Decimal" Precision="38" Scale="0" Nullable="false" />
+    <Property Name="LUGAR_RECOGIDA" Type="String" MaxLength="45" FixedLength="false" Unicode="false" />
+    <Property Name="FECHA_RECOGIDA" Type="DateTime" />
+    <Property Name="RESERVA_ID_RESERVA" Type="Decimal" Precision="38" Scale="0" Nullable="false" />
+    <NavigationProperty Name="CONDUCTOR" Relationship="Self.CONDUCTOR_TRANSPORTE_FK" FromRole="TRANSPORTE" ToRole="CONDUCTOR" />
+    <NavigationProperty Name="RESERVA" Relationship="Self.TRANSPORTE_RESERVA_FK" FromRole="TRANSPORTE" ToRole="RESERVA" />
+  </EntityType>
+  <EntityType Name="USUARIO">
+    <Key>
+      <PropertyRef Name="RUT_USUARIO" />
+    </Key>
+    <Property Name="RUT_USUARIO" Type="String" MaxLength="15" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="NOMBRE" Type="String" MaxLength="45" FixedLength="false" Unicode="false" />
+    <Property Name="APELLIDO" Type="String" MaxLength="45" FixedLength="false" Unicode="false" />
+    <Property Name="EMAIL" Type="String" MaxLength="45" FixedLength="false" Unicode="false" />
+    <Property Name="DIRECCION" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="TELEFONO" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="CUENTA_USUARIO_ID_CUENTA_USUARIO" Type="Decimal" Precision="38" Scale="0" Nullable="false" />
+    <NavigationProperty Name="CUENTA_USUARIO" Relationship="Self.USUARIO_CUENTA_USUARIO_FK" FromRole="USUARIO" ToRole="CUENTA_USUARIO" />
+    <NavigationProperty Name="DETALLE_ACOMPAÑANTE" Relationship="Self.DETALLE_ACOMPAÑANTE_USUARIO_FK" FromRole="USUARIO" ToRole="DETALLE_ACOMPAÑANTE" />
+    <NavigationProperty Name="RESERVA" Relationship="Self.RESERVA_USUARIO_FK" FromRole="USUARIO" ToRole="RESERVA" />
+  </EntityType>
+  <EntityType Name="VEHICULO">
+    <Key>
+      <PropertyRef Name="PATENTE" />
+    </Key>
+    <Property Name="PATENTE" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="MARCA" Type="String" MaxLength="45" FixedLength="false" Unicode="false" />
+    <Property Name="MODELO" Type="String" MaxLength="45" FixedLength="false" Unicode="false" />
+    <Property Name="CONDUCTOR_RUT_CONDUCTOR" Type="String" MaxLength="15" FixedLength="false" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="CONDUCTOR" Relationship="Self.VEHICULO_CONDUCTOR_FK" FromRole="VEHICULO" ToRole="CONDUCTOR" />
+  </EntityType>
+  <Association Name="DETALLE_ACOMPAÑANTE_ACOMPAÑANTE_FK">
+    <End Role="ACOMPAÑANTE" Type="Self.ACOMPAÑANTE" Multiplicity="1" />
+    <End Role="DETALLE_ACOMPAÑANTE" Type="Self.DETALLE_ACOMPAÑANTE" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ACOMPAÑANTE">
+        <PropertyRef Name="ID_ACOMPAÑANTE" />
+      </Principal>
+      <Dependent Role="DETALLE_ACOMPAÑANTE">
+        <PropertyRef Name="ACOMPAÑANTE_ID_ACOMPAÑANTE" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="DETALLE_CHECK_OUT_CHECK_OUT_FK">
+    <End Role="CHECK_OUT" Type="Self.CHECK_OUT" Multiplicity="0..1" />
+    <End Role="DETALLE_CHECKOUT" Type="Self.DETALLE_CHECKOUT" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="CHECK_OUT">
+        <PropertyRef Name="ID_CHECK_OUT" />
+      </Principal>
+      <Dependent Role="DETALLE_CHECKOUT">
+        <PropertyRef Name="CHECK_OUT_ID_CHECK_OUT" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="CHECKLIST_ESTADO_INVENTARIO_OBJETO_HABITACION_FK">
+    <End Role="OBJETO_HABITACION" Type="Self.OBJETO_HABITACION" Multiplicity="1" />
+    <End Role="CHECKLIST_ESTADO_INVENTARIO" Type="Self.CHECKLIST_ESTADO_INVENTARIO" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="OBJETO_HABITACION">
+        <PropertyRef Name="ID_OBJETO_HABITACION" />
+      </Principal>
+      <Dependent Role="CHECKLIST_ESTADO_INVENTARIO">
+        <PropertyRef Name="OBJETO_HABITACION_ID_OBJETO_HABITACION" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="COMUNA_PROVINCIA_FK">
+    <End Role="PROVINCIA" Type="Self.PROVINCIA" Multiplicity="1" />
+    <End Role="COMUNA" Type="Self.COMUNA" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="PROVINCIA">
+        <PropertyRef Name="ID_PROVINCIA" />
+        <PropertyRef Name="REGION_ID_REGION" />
+      </Principal>
+      <Dependent Role="COMUNA">
+        <PropertyRef Name="PROVINCIA_ID_PROVINCIA" />
+        <PropertyRef Name="PROVINCIA_REGION_ID_REGION" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="DEPARTAMENTO_COMUNA_FK">
+    <End Role="COMUNA" Type="Self.COMUNA" Multiplicity="1" />
+    <End Role="DEPARTAMENTO" Type="Self.DEPARTAMENTO" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="COMUNA">
+        <PropertyRef Name="ID_COMUNA" />
+        <PropertyRef Name="PROVINCIA_ID_PROVINCIA" />
+        <PropertyRef Name="PROVINCIA_REGION_ID_REGION" />
+      </Principal>
+      <Dependent Role="DEPARTAMENTO">
+        <PropertyRef Name="COMUNA_ID_COMUNA" />
+        <PropertyRef Name="COMUNA_PROVINCIA_ID_PROVINCIA" />
+        <PropertyRef Name="COMUNA_PROVINCIA_REGION_ID_REGION" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="CONDUCTOR_TRANSPORTE_FK">
+    <End Role="TRANSPORTE" Type="Self.TRANSPORTE" Multiplicity="1" />
+    <End Role="CONDUCTOR" Type="Self.CONDUCTOR" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TRANSPORTE">
+        <PropertyRef Name="ID_TRANSPORTE" />
+      </Principal>
+      <Dependent Role="CONDUCTOR">
+        <PropertyRef Name="TRANSPORTE_ID_TRANSPORTE" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="VEHICULO_CONDUCTOR_FK">
+    <End Role="CONDUCTOR" Type="Self.CONDUCTOR" Multiplicity="1" />
+    <End Role="VEHICULO" Type="Self.VEHICULO" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="CONDUCTOR">
+        <PropertyRef Name="RUT_CONDUCTOR" />
+      </Principal>
+      <Dependent Role="VEHICULO">
+        <PropertyRef Name="CONDUCTOR_RUT_CONDUCTOR" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="CONTRATO_PROVEEDOR_FK">
+    <End Role="PROVEEDOR" Type="Self.PROVEEDOR" Multiplicity="1" />
+    <End Role="CONTRATO" Type="Self.CONTRATO" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="PROVEEDOR">
+        <PropertyRef Name="ID_PROVEEDOR" />
+      </Principal>
+      <Dependent Role="CONTRATO">
+        <PropertyRef Name="PROVEEDOR_ID_PROVEEDOR" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="SERVICIO_CONTRATO_FK">
+    <End Role="CONTRATO" Type="Self.CONTRATO" Multiplicity="1" />
+    <End Role="SERVICIO" Type="Self.SERVICIO" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="CONTRATO">
+        <PropertyRef Name="ID_CONTRATO" />
+        <PropertyRef Name="PROVEEDOR_ID_PROVEEDOR" />
+      </Principal>
+      <Dependent Role="SERVICIO">
+        <PropertyRef Name="CONTRATO_ID_CONTRATO" />
+        <PropertyRef Name="CONTRATO_PROVEEDOR_ID_PROVEEDOR" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="CUENTA_USUARIO_TIPO_USUARIO_FK">
+    <End Role="TIPO_USUARIO" Type="Self.TIPO_USUARIO" Multiplicity="1" />
+    <End Role="CUENTA_USUARIO" Type="Self.CUENTA_USUARIO" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TIPO_USUARIO">
+        <PropertyRef Name="ID_TIPO_USUARIO" />
+      </Principal>
+      <Dependent Role="CUENTA_USUARIO">
+        <PropertyRef Name="TIPO_USUARIO_ID_TIPO_USUARIO" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="USUARIO_CUENTA_USUARIO_FK">
+    <End Role="CUENTA_USUARIO" Type="Self.CUENTA_USUARIO" Multiplicity="1" />
+    <End Role="USUARIO" Type="Self.USUARIO" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="CUENTA_USUARIO">
+        <PropertyRef Name="ID_CUENTA_USUARIO" />
+      </Principal>
+      <Dependent Role="USUARIO">
+        <PropertyRef Name="CUENTA_USUARIO_ID_CUENTA_USUARIO" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="DETALLE_IMPUESTO_DEPARTAMENTO_FK">
+    <End Role="DEPARTAMENTO" Type="Self.DEPARTAMENTO" Multiplicity="1" />
+    <End Role="DETALLE_IMPUESTO" Type="Self.DETALLE_IMPUESTO" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="DEPARTAMENTO">
+        <PropertyRef Name="ID_DEPARTAMENTO" />
+      </Principal>
+      <Dependent Role="DETALLE_IMPUESTO">
+        <PropertyRef Name="DEPARTAMENTO_ID_DEPARTAMENTO" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="DETALLE_INVENTARIO_DEPARTAMENTO_FK">
+    <End Role="DEPARTAMENTO" Type="Self.DEPARTAMENTO" Multiplicity="1" />
+    <End Role="DETALLE_INVENTARIO" Type="Self.DETALLE_INVENTARIO" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="DEPARTAMENTO">
+        <PropertyRef Name="ID_DEPARTAMENTO" />
+      </Principal>
+      <Dependent Role="DETALLE_INVENTARIO">
+        <PropertyRef Name="DEPARTAMENTO_ID_DEPARTAMENTO" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="DETALLE_MANTENCION_DEPARTAMENTO_FK">
+    <End Role="DEPARTAMENTO" Type="Self.DEPARTAMENTO" Multiplicity="1" />
+    <End Role="DETALLE_MANTENCION" Type="Self.DETALLE_MANTENCION" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="DEPARTAMENTO">
+        <PropertyRef Name="ID_DEPARTAMENTO" />
+      </Principal>
+      <Dependent Role="DETALLE_MANTENCION">
+        <PropertyRef Name="DEPARTAMENTO_ID_DEPARTAMENTO" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="DETALLE_RESERVA_DEPARTAMENTO_FK">
+    <End Role="DEPARTAMENTO" Type="Self.DEPARTAMENTO" Multiplicity="1" />
+    <End Role="DETALLE_RESERVA" Type="Self.DETALLE_RESERVA" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="DEPARTAMENTO">
+        <PropertyRef Name="ID_DEPARTAMENTO" />
+      </Principal>
+      <Dependent Role="DETALLE_RESERVA">
+        <PropertyRef Name="DEPARTAMENTO_ID_DEPARTAMENTO" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="DETALLE_ACOMPAÑANTE_USUARIO_FK">
+    <End Role="USUARIO" Type="Self.USUARIO" Multiplicity="1" />
+    <End Role="DETALLE_ACOMPAÑANTE" Type="Self.DETALLE_ACOMPAÑANTE" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="USUARIO">
+        <PropertyRef Name="RUT_USUARIO" />
+      </Principal>
+      <Dependent Role="DETALLE_ACOMPAÑANTE">
+        <PropertyRef Name="USUARIO_RUT_USUARIO" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="DETALLE_CHECK_OUT_RESERVA_FK">
+    <End Role="RESERVA" Type="Self.RESERVA" Multiplicity="0..1" />
+    <End Role="DETALLE_CHECKOUT" Type="Self.DETALLE_CHECKOUT" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="RESERVA">
+        <PropertyRef Name="ID_RESERVA" />
+      </Principal>
+      <Dependent Role="DETALLE_CHECKOUT">
+        <PropertyRef Name="RESERVA_ID_RESERVA" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="DETALLE_IMPUESTO_IMPUESTO_FK">
+    <End Role="IMPUESTO" Type="Self.IMPUESTO" Multiplicity="1" />
+    <End Role="DETALLE_IMPUESTO" Type="Self.DETALLE_IMPUESTO" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="IMPUESTO">
+        <PropertyRef Name="ID_IMPUESTO" />
+      </Principal>
+      <Dependent Role="DETALLE_IMPUESTO">
+        <PropertyRef Name="IMPUESTO_ID_IMPUESTO" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="DETALLE_INVENTARIO_OBJETO_HABITACION_FK">
+    <End Role="OBJETO_HABITACION" Type="Self.OBJETO_HABITACION" Multiplicity="1" />
+    <End Role="DETALLE_INVENTARIO" Type="Self.DETALLE_INVENTARIO" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="OBJETO_HABITACION">
+        <PropertyRef Name="ID_OBJETO_HABITACION" />
+      </Principal>
+      <Dependent Role="DETALLE_INVENTARIO">
+        <PropertyRef Name="OBJETO_HABITACION_ID_OBJETO_HABITACION" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="DETALLE_MANTENCION_MANTENCION_FK">
+    <End Role="MANTENCION" Type="Self.MANTENCION" Multiplicity="1" />
+    <End Role="DETALLE_MANTENCION" Type="Self.DETALLE_MANTENCION" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="MANTENCION">
+        <PropertyRef Name="ID_MANTENCION" />
+      </Principal>
+      <Dependent Role="DETALLE_MANTENCION">
+        <PropertyRef Name="MANTENCION_ID_MANTENCION" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="DETALLE_RESERVA_RESERVA_FK">
+    <End Role="RESERVA" Type="Self.RESERVA" Multiplicity="1" />
+    <End Role="DETALLE_RESERVA" Type="Self.DETALLE_RESERVA" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="RESERVA">
+        <PropertyRef Name="ID_RESERVA" />
+      </Principal>
+      <Dependent Role="DETALLE_RESERVA">
+        <PropertyRef Name="RESERVA_ID_RESERVA" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="DETALLE_SERVICIO_EXTRA_RESERVA_FK">
+    <End Role="RESERVA" Type="Self.RESERVA" Multiplicity="1" />
+    <End Role="DETALLE_SERVICIO_EXTRA" Type="Self.DETALLE_SERVICIO_EXTRA" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="RESERVA">
+        <PropertyRef Name="ID_RESERVA" />
+      </Principal>
+      <Dependent Role="DETALLE_SERVICIO_EXTRA">
+        <PropertyRef Name="RESERVA_ID_RESERVA" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="DETALLE_SERVICIO_EXTRA_SERVICIO_FK">
+    <End Role="SERVICIO" Type="Self.SERVICIO" Multiplicity="1" />
+    <End Role="DETALLE_SERVICIO_EXTRA" Type="Self.DETALLE_SERVICIO_EXTRA" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="SERVICIO">
+        <PropertyRef Name="ID_SERVICIO" />
+        <PropertyRef Name="CONTRATO_ID_CONTRATO" />
+        <PropertyRef Name="CONTRATO_PROVEEDOR_ID_PROVEEDOR" />
+      </Principal>
+      <Dependent Role="DETALLE_SERVICIO_EXTRA">
+        <PropertyRef Name="SERVICIO_ID_SERVICIO" />
+        <PropertyRef Name="SERVICIO_CONTRATO_ID_CONTRATO" />
+        <PropertyRef Name="SERVICIO_CONTRATO_PROVEEDOR_ID_PROVEEDOR" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="DETALLE_TOUR_RESERVA_FK">
+    <End Role="RESERVA" Type="Self.RESERVA" Multiplicity="1" />
+    <End Role="DETALLE_TOUR" Type="Self.DETALLE_TOUR" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="RESERVA">
+        <PropertyRef Name="ID_RESERVA" />
+      </Principal>
+      <Dependent Role="DETALLE_TOUR">
+        <PropertyRef Name="RESERVA_ID_RESERVA" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="DETALLE_TOUR_TOUR_FK">
+    <End Role="TOUR" Type="Self.TOUR" Multiplicity="1" />
+    <End Role="DETALLE_TOUR" Type="Self.DETALLE_TOUR" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TOUR">
+        <PropertyRef Name="ID_TOUR" />
+      </Principal>
+      <Dependent Role="DETALLE_TOUR">
+        <PropertyRef Name="TOUR_ID_TOUR" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="PAGO_ESTADO_PAGO_FK">
+    <End Role="ESTADO_PAGO" Type="Self.ESTADO_PAGO" Multiplicity="1" />
+    <End Role="PAGO" Type="Self.PAGO" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ESTADO_PAGO">
+        <PropertyRef Name="ID_ESTADO_PAGO" />
+      </Principal>
+      <Dependent Role="PAGO">
+        <PropertyRef Name="ESTADO_PAGO_ID_ESTADO_PAGO" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="PAGO_RESERVA_FK">
+    <End Role="RESERVA" Type="Self.RESERVA" Multiplicity="1" />
+    <End Role="PAGO" Type="Self.PAGO" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="RESERVA">
+        <PropertyRef Name="ID_RESERVA" />
+      </Principal>
+      <Dependent Role="PAGO">
+        <PropertyRef Name="RESERVA_ID_RESERVA" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="PROVINCIA_REGION_FK">
+    <End Role="REGION" Type="Self.REGION" Multiplicity="1" />
+    <End Role="PROVINCIA" Type="Self.PROVINCIA" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="REGION">
+        <PropertyRef Name="ID_REGION" />
+      </Principal>
+      <Dependent Role="PROVINCIA">
+        <PropertyRef Name="REGION_ID_REGION" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="RESERVA_USUARIO_FK">
+    <End Role="USUARIO" Type="Self.USUARIO" Multiplicity="1" />
+    <End Role="RESERVA" Type="Self.RESERVA" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="USUARIO">
+        <PropertyRef Name="RUT_USUARIO" />
+      </Principal>
+      <Dependent Role="RESERVA">
+        <PropertyRef Name="USUARIO_ID_USUARIO" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="TRANSPORTE_RESERVA_FK">
+    <End Role="RESERVA" Type="Self.RESERVA" Multiplicity="1" />
+    <End Role="TRANSPORTE" Type="Self.TRANSPORTE" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="RESERVA">
+        <PropertyRef Name="ID_RESERVA" />
+      </Principal>
+      <Dependent Role="TRANSPORTE">
+        <PropertyRef Name="RESERVA_ID_RESERVA" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="TurismoRealWebEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="ACOMPAÑANTE" EntityType="Self.ACOMPAÑANTE" />
+    <EntitySet Name="CHECK_OUT" EntityType="Self.CHECK_OUT" />
+    <EntitySet Name="CHECKLIST_ESTADO_INVENTARIO" EntityType="Self.CHECKLIST_ESTADO_INVENTARIO" />
+    <EntitySet Name="COMUNA" EntityType="Self.COMUNA" />
+    <EntitySet Name="CONDUCTOR" EntityType="Self.CONDUCTOR" />
+    <EntitySet Name="CONTRATO" EntityType="Self.CONTRATO" />
+    <EntitySet Name="CUENTA_USUARIO" EntityType="Self.CUENTA_USUARIO" />
+    <EntitySet Name="DEPARTAMENTO" EntityType="Self.DEPARTAMENTO" />
+    <EntitySet Name="DETALLE_ACOMPAÑANTE" EntityType="Self.DETALLE_ACOMPAÑANTE" />
+    <EntitySet Name="DETALLE_CHECKOUT" EntityType="Self.DETALLE_CHECKOUT" />
+    <EntitySet Name="DETALLE_IMPUESTO" EntityType="Self.DETALLE_IMPUESTO" />
+    <EntitySet Name="DETALLE_INVENTARIO" EntityType="Self.DETALLE_INVENTARIO" />
+    <EntitySet Name="DETALLE_MANTENCION" EntityType="Self.DETALLE_MANTENCION" />
+    <EntitySet Name="DETALLE_RESERVA" EntityType="Self.DETALLE_RESERVA" />
+    <EntitySet Name="DETALLE_SERVICIO_EXTRA" EntityType="Self.DETALLE_SERVICIO_EXTRA" />
+    <EntitySet Name="DETALLE_TOUR" EntityType="Self.DETALLE_TOUR" />
+    <EntitySet Name="ESTADO_PAGO" EntityType="Self.ESTADO_PAGO" />
+    <EntitySet Name="IMPUESTO" EntityType="Self.IMPUESTO" />
+    <EntitySet Name="MANTENCION" EntityType="Self.MANTENCION" />
+    <EntitySet Name="OBJETO_HABITACION" EntityType="Self.OBJETO_HABITACION" />
+    <EntitySet Name="PAGO" EntityType="Self.PAGO" />
+    <EntitySet Name="PROVEEDOR" EntityType="Self.PROVEEDOR" />
+    <EntitySet Name="PROVINCIA" EntityType="Self.PROVINCIA" />
+    <EntitySet Name="REGION" EntityType="Self.REGION" />
+    <EntitySet Name="RESERVA" EntityType="Self.RESERVA" />
+    <EntitySet Name="SERVICIO" EntityType="Self.SERVICIO" />
+    <EntitySet Name="TIPO_USUARIO" EntityType="Self.TIPO_USUARIO" />
+    <EntitySet Name="TOUR" EntityType="Self.TOUR" />
+    <EntitySet Name="TRANSPORTE" EntityType="Self.TRANSPORTE" />
+    <EntitySet Name="USUARIO" EntityType="Self.USUARIO" />
+    <EntitySet Name="VEHICULO" EntityType="Self.VEHICULO" />
+    <AssociationSet Name="DETALLE_ACOMPAÑANTE_ACOMPAÑANTE_FK" Association="Self.DETALLE_ACOMPAÑANTE_ACOMPAÑANTE_FK">
+      <End Role="ACOMPAÑANTE" EntitySet="ACOMPAÑANTE" />
+      <End Role="DETALLE_ACOMPAÑANTE" EntitySet="DETALLE_ACOMPAÑANTE" />
+    </AssociationSet>
+    <AssociationSet Name="DETALLE_CHECK_OUT_CHECK_OUT_FK" Association="Self.DETALLE_CHECK_OUT_CHECK_OUT_FK">
+      <End Role="CHECK_OUT" EntitySet="CHECK_OUT" />
+      <End Role="DETALLE_CHECKOUT" EntitySet="DETALLE_CHECKOUT" />
+    </AssociationSet>
+    <AssociationSet Name="CHECKLIST_ESTADO_INVENTARIO_OBJETO_HABITACION_FK" Association="Self.CHECKLIST_ESTADO_INVENTARIO_OBJETO_HABITACION_FK">
+      <End Role="OBJETO_HABITACION" EntitySet="OBJETO_HABITACION" />
+      <End Role="CHECKLIST_ESTADO_INVENTARIO" EntitySet="CHECKLIST_ESTADO_INVENTARIO" />
+    </AssociationSet>
+    <AssociationSet Name="COMUNA_PROVINCIA_FK" Association="Self.COMUNA_PROVINCIA_FK">
+      <End Role="PROVINCIA" EntitySet="PROVINCIA" />
+      <End Role="COMUNA" EntitySet="COMUNA" />
+    </AssociationSet>
+    <AssociationSet Name="DEPARTAMENTO_COMUNA_FK" Association="Self.DEPARTAMENTO_COMUNA_FK">
+      <End Role="COMUNA" EntitySet="COMUNA" />
+      <End Role="DEPARTAMENTO" EntitySet="DEPARTAMENTO" />
+    </AssociationSet>
+    <AssociationSet Name="CONDUCTOR_TRANSPORTE_FK" Association="Self.CONDUCTOR_TRANSPORTE_FK">
+      <End Role="TRANSPORTE" EntitySet="TRANSPORTE" />
+      <End Role="CONDUCTOR" EntitySet="CONDUCTOR" />
+    </AssociationSet>
+    <AssociationSet Name="VEHICULO_CONDUCTOR_FK" Association="Self.VEHICULO_CONDUCTOR_FK">
+      <End Role="CONDUCTOR" EntitySet="CONDUCTOR" />
+      <End Role="VEHICULO" EntitySet="VEHICULO" />
+    </AssociationSet>
+    <AssociationSet Name="CONTRATO_PROVEEDOR_FK" Association="Self.CONTRATO_PROVEEDOR_FK">
+      <End Role="PROVEEDOR" EntitySet="PROVEEDOR" />
+      <End Role="CONTRATO" EntitySet="CONTRATO" />
+    </AssociationSet>
+    <AssociationSet Name="SERVICIO_CONTRATO_FK" Association="Self.SERVICIO_CONTRATO_FK">
+      <End Role="CONTRATO" EntitySet="CONTRATO" />
+      <End Role="SERVICIO" EntitySet="SERVICIO" />
+    </AssociationSet>
+    <AssociationSet Name="CUENTA_USUARIO_TIPO_USUARIO_FK" Association="Self.CUENTA_USUARIO_TIPO_USUARIO_FK">
+      <End Role="TIPO_USUARIO" EntitySet="TIPO_USUARIO" />
+      <End Role="CUENTA_USUARIO" EntitySet="CUENTA_USUARIO" />
+    </AssociationSet>
+    <AssociationSet Name="USUARIO_CUENTA_USUARIO_FK" Association="Self.USUARIO_CUENTA_USUARIO_FK">
+      <End Role="CUENTA_USUARIO" EntitySet="CUENTA_USUARIO" />
+      <End Role="USUARIO" EntitySet="USUARIO" />
+    </AssociationSet>
+    <AssociationSet Name="DETALLE_IMPUESTO_DEPARTAMENTO_FK" Association="Self.DETALLE_IMPUESTO_DEPARTAMENTO_FK">
+      <End Role="DEPARTAMENTO" EntitySet="DEPARTAMENTO" />
+      <End Role="DETALLE_IMPUESTO" EntitySet="DETALLE_IMPUESTO" />
+    </AssociationSet>
+    <AssociationSet Name="DETALLE_INVENTARIO_DEPARTAMENTO_FK" Association="Self.DETALLE_INVENTARIO_DEPARTAMENTO_FK">
+      <End Role="DEPARTAMENTO" EntitySet="DEPARTAMENTO" />
+      <End Role="DETALLE_INVENTARIO" EntitySet="DETALLE_INVENTARIO" />
+    </AssociationSet>
+    <AssociationSet Name="DETALLE_MANTENCION_DEPARTAMENTO_FK" Association="Self.DETALLE_MANTENCION_DEPARTAMENTO_FK">
+      <End Role="DEPARTAMENTO" EntitySet="DEPARTAMENTO" />
+      <End Role="DETALLE_MANTENCION" EntitySet="DETALLE_MANTENCION" />
+    </AssociationSet>
+    <AssociationSet Name="DETALLE_RESERVA_DEPARTAMENTO_FK" Association="Self.DETALLE_RESERVA_DEPARTAMENTO_FK">
+      <End Role="DEPARTAMENTO" EntitySet="DEPARTAMENTO" />
+      <End Role="DETALLE_RESERVA" EntitySet="DETALLE_RESERVA" />
+    </AssociationSet>
+    <AssociationSet Name="DETALLE_ACOMPAÑANTE_USUARIO_FK" Association="Self.DETALLE_ACOMPAÑANTE_USUARIO_FK">
+      <End Role="USUARIO" EntitySet="USUARIO" />
+      <End Role="DETALLE_ACOMPAÑANTE" EntitySet="DETALLE_ACOMPAÑANTE" />
+    </AssociationSet>
+    <AssociationSet Name="DETALLE_CHECK_OUT_RESERVA_FK" Association="Self.DETALLE_CHECK_OUT_RESERVA_FK">
+      <End Role="RESERVA" EntitySet="RESERVA" />
+      <End Role="DETALLE_CHECKOUT" EntitySet="DETALLE_CHECKOUT" />
+    </AssociationSet>
+    <AssociationSet Name="DETALLE_IMPUESTO_IMPUESTO_FK" Association="Self.DETALLE_IMPUESTO_IMPUESTO_FK">
+      <End Role="IMPUESTO" EntitySet="IMPUESTO" />
+      <End Role="DETALLE_IMPUESTO" EntitySet="DETALLE_IMPUESTO" />
+    </AssociationSet>
+    <AssociationSet Name="DETALLE_INVENTARIO_OBJETO_HABITACION_FK" Association="Self.DETALLE_INVENTARIO_OBJETO_HABITACION_FK">
+      <End Role="OBJETO_HABITACION" EntitySet="OBJETO_HABITACION" />
+      <End Role="DETALLE_INVENTARIO" EntitySet="DETALLE_INVENTARIO" />
+    </AssociationSet>
+    <AssociationSet Name="DETALLE_MANTENCION_MANTENCION_FK" Association="Self.DETALLE_MANTENCION_MANTENCION_FK">
+      <End Role="MANTENCION" EntitySet="MANTENCION" />
+      <End Role="DETALLE_MANTENCION" EntitySet="DETALLE_MANTENCION" />
+    </AssociationSet>
+    <AssociationSet Name="DETALLE_RESERVA_RESERVA_FK" Association="Self.DETALLE_RESERVA_RESERVA_FK">
+      <End Role="RESERVA" EntitySet="RESERVA" />
+      <End Role="DETALLE_RESERVA" EntitySet="DETALLE_RESERVA" />
+    </AssociationSet>
+    <AssociationSet Name="DETALLE_SERVICIO_EXTRA_RESERVA_FK" Association="Self.DETALLE_SERVICIO_EXTRA_RESERVA_FK">
+      <End Role="RESERVA" EntitySet="RESERVA" />
+      <End Role="DETALLE_SERVICIO_EXTRA" EntitySet="DETALLE_SERVICIO_EXTRA" />
+    </AssociationSet>
+    <AssociationSet Name="DETALLE_SERVICIO_EXTRA_SERVICIO_FK" Association="Self.DETALLE_SERVICIO_EXTRA_SERVICIO_FK">
+      <End Role="SERVICIO" EntitySet="SERVICIO" />
+      <End Role="DETALLE_SERVICIO_EXTRA" EntitySet="DETALLE_SERVICIO_EXTRA" />
+    </AssociationSet>
+    <AssociationSet Name="DETALLE_TOUR_RESERVA_FK" Association="Self.DETALLE_TOUR_RESERVA_FK">
+      <End Role="RESERVA" EntitySet="RESERVA" />
+      <End Role="DETALLE_TOUR" EntitySet="DETALLE_TOUR" />
+    </AssociationSet>
+    <AssociationSet Name="DETALLE_TOUR_TOUR_FK" Association="Self.DETALLE_TOUR_TOUR_FK">
+      <End Role="TOUR" EntitySet="TOUR" />
+      <End Role="DETALLE_TOUR" EntitySet="DETALLE_TOUR" />
+    </AssociationSet>
+    <AssociationSet Name="PAGO_ESTADO_PAGO_FK" Association="Self.PAGO_ESTADO_PAGO_FK">
+      <End Role="ESTADO_PAGO" EntitySet="ESTADO_PAGO" />
+      <End Role="PAGO" EntitySet="PAGO" />
+    </AssociationSet>
+    <AssociationSet Name="PAGO_RESERVA_FK" Association="Self.PAGO_RESERVA_FK">
+      <End Role="RESERVA" EntitySet="RESERVA" />
+      <End Role="PAGO" EntitySet="PAGO" />
+    </AssociationSet>
+    <AssociationSet Name="PROVINCIA_REGION_FK" Association="Self.PROVINCIA_REGION_FK">
+      <End Role="REGION" EntitySet="REGION" />
+      <End Role="PROVINCIA" EntitySet="PROVINCIA" />
+    </AssociationSet>
+    <AssociationSet Name="RESERVA_USUARIO_FK" Association="Self.RESERVA_USUARIO_FK">
+      <End Role="USUARIO" EntitySet="USUARIO" />
+      <End Role="RESERVA" EntitySet="RESERVA" />
+    </AssociationSet>
+    <AssociationSet Name="TRANSPORTE_RESERVA_FK" Association="Self.TRANSPORTE_RESERVA_FK">
+      <End Role="RESERVA" EntitySet="RESERVA" />
+      <End Role="TRANSPORTE" EntitySet="TRANSPORTE" />
+    </AssociationSet>
+    <FunctionImport Name="SP_CREATE_RESERVA">
+      <Parameter Name="R_FECHA_ENTRADA" Mode="In" Type="DateTime" />
+      <Parameter Name="R_FECHA_SALIDA" Mode="In" Type="DateTime" />
+      <Parameter Name="R_FIRMA_CONFORMIDAD_CLIENTE" Mode="In" Type="String" />
+      <Parameter Name="R_ID_USUARIO" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="SP_CREATE_USUARIO">
+      <Parameter Name="V_RUT_USUARIO" Mode="In" Type="String" />
+      <Parameter Name="V_NOMBRE" Mode="In" Type="String" />
+      <Parameter Name="V_APELLIDO" Mode="In" Type="String" />
+      <Parameter Name="V_EMAIL" Mode="In" Type="String" />
+      <Parameter Name="V_DIRECCION" Mode="In" Type="String" />
+      <Parameter Name="V_TELEFONO" Mode="In" Type="String" />
+      <Parameter Name="V_ID_CUENTA_USUARIO" Mode="In" Type="Decimal" />
+    </FunctionImport>
+    <FunctionImport Name="SP_DELETE_RESERVA">
+      <Parameter Name="V_ID_RESERVA" Mode="In" Type="Decimal" />
+    </FunctionImport>
+    <FunctionImport Name="SP_UPDATE_RESERVA">
+      <Parameter Name="V_ID_RESERVA" Mode="In" Type="Decimal" />
+      <Parameter Name="V_FECHA_ENTRADA" Mode="In" Type="DateTime" />
+      <Parameter Name="V_FECHA_SALIDA" Mode="In" Type="DateTime" />
+      <Parameter Name="V_FIRMA_CONFORMIDAD_CLIENTE" Mode="In" Type="String" />
+      <Parameter Name="V_ID_USUARIO" Mode="In" Type="Decimal" />
+    </FunctionImport>
+    <FunctionImport Name="SP_UPDATE_USUARIO">
+      <Parameter Name="V_RUT_USUARIO" Mode="In" Type="String" />
+      <Parameter Name="V_NOMBRE" Mode="In" Type="String" />
+      <Parameter Name="V_APELLIDO" Mode="In" Type="String" />
+      <Parameter Name="V_EMAIL" Mode="In" Type="String" />
+      <Parameter Name="V_DIRECCION" Mode="In" Type="String" />
+      <Parameter Name="V_TELEFONO" Mode="In" Type="String" />
+      <Parameter Name="V_ID_CUENTA_USUARIO" Mode="In" Type="Decimal" />
+    </FunctionImport>
+  </EntityContainer>
+</Schema>

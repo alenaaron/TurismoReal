@@ -1,0 +1,47 @@
+﻿@using TurismoReal.Negocio;
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Listado de Departamentos</h2>
+
+@{ List<Departamento> departamentos = (List<Departamento>)ViewBag.departamentos;}
+
+<table>
+    <tr>
+        <th>Direccion</th>
+        <th>Costo </th>
+        <th>Estado</th>
+        <th>Descripcion</th>
+        <th>Orientacion</th>
+        <th>Estacionamiento </th>
+        <th>Numero de Habitaciones</th>
+        <th>Numero de Banos</th>
+        <th>Numero de Estacionamiento</th>
+        <th>Comuna</th>
+        <th>Provincia</th>
+        <th>Region</th>
+    </tr>
+
+
+    @foreach (var departamento in departamentos)
+    {
+    <tr>
+        <td>@departamento.direccion</td>
+        <td>@departamento.costo_departamento</td>
+        <td>@departamento.estado_departamento</td>
+        <td>@departamento.descripcion_estado_departamento</td>
+        <td>@departamento.orientacion_departamento</td>
+        <td>@departamento.estacionamiento</td>
+        <td>@departamento.num_estacionamiento</td>
+        <td>@departamento.num_baño</td>
+        <td>@departamento.num_estacionamiento</td>
+        <td>@departamento.comuna_id_comuna</td>
+        <td>@departamento.comuna_provincia_id_provincia</td>
+        <td>@departamento.comuna_provincia_region_id_region</td>
+    </tr>
+    }
+
+
+</table>

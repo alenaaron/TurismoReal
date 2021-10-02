@@ -1,0 +1,323 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="ModelStoreContainer" CdmEntityContainer="TurismoRealAppEntities">
+    <EntitySetMapping Name="ACOMPAÑANTE">
+      <EntityTypeMapping TypeName="Model.ACOMPAÑANTE">
+        <MappingFragment StoreEntitySet="ACOMPAÑANTE">
+          <ScalarProperty Name="ID_ACOMPAÑANTE" ColumnName="ID_ACOMPAÑANTE" />
+          <ScalarProperty Name="NOMBRE_ACOMPAÑANTE" ColumnName="NOMBRE_ACOMPAÑANTE" />
+          <ScalarProperty Name="APELLIDO_ACOMPAÑANTE" ColumnName="APELLIDO_ACOMPAÑANTE" />
+          <ScalarProperty Name="RANGO_ETARIO" ColumnName="RANGO_ETARIO" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="CHECK_OUT">
+      <EntityTypeMapping TypeName="Model.CHECK_OUT">
+        <MappingFragment StoreEntitySet="CHECK_OUT">
+          <ScalarProperty Name="ID_CHECK_OUT" ColumnName="ID_CHECK_OUT" />
+          <ScalarProperty Name="ESTADO_HABITACION" ColumnName="ESTADO_HABITACION" />
+          <ScalarProperty Name="MULTA" ColumnName="MULTA" />
+          <ScalarProperty Name="COSTO_REPARACION" ColumnName="COSTO_REPARACION" />
+          <ScalarProperty Name="DESCRIPCION" ColumnName="DESCRIPCION" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="CHECKLIST_ESTADO_INVENTARIO">
+      <EntityTypeMapping TypeName="Model.CHECKLIST_ESTADO_INVENTARIO">
+        <MappingFragment StoreEntitySet="CHECKLIST_ESTADO_INVENTARIO">
+          <ScalarProperty Name="ID_CHECK_LIST" ColumnName="ID_CHECK_LIST" />
+          <ScalarProperty Name="ESTADO_CHECK_LIST" ColumnName="ESTADO_CHECK_LIST" />
+          <ScalarProperty Name="OBJETO_HABITACION_ID_OBJETO_HABITACION" ColumnName="OBJETO_HABITACION_ID_OBJETO_HABITACION" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="COMUNA">
+      <EntityTypeMapping TypeName="Model.COMUNA">
+        <MappingFragment StoreEntitySet="COMUNA">
+          <ScalarProperty Name="ID_COMUNA" ColumnName="ID_COMUNA" />
+          <ScalarProperty Name="NOMBRE_COMUNA" ColumnName="NOMBRE_COMUNA" />
+          <ScalarProperty Name="PROVINCIA_ID_PROVINCIA" ColumnName="PROVINCIA_ID_PROVINCIA" />
+          <ScalarProperty Name="PROVINCIA_REGION_ID_REGION" ColumnName="PROVINCIA_REGION_ID_REGION" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="CONDUCTOR">
+      <EntityTypeMapping TypeName="Model.CONDUCTOR">
+        <MappingFragment StoreEntitySet="CONDUCTOR">
+          <ScalarProperty Name="RUT_CONDUCTOR" ColumnName="RUT_CONDUCTOR" />
+          <ScalarProperty Name="NOMBRE_CONDUCTOR" ColumnName="NOMBRE_CONDUCTOR" />
+          <ScalarProperty Name="APELLIDO_CONDUCTOR" ColumnName="APELLIDO_CONDUCTOR" />
+          <ScalarProperty Name="TRANSPORTE_ID_TRANSPORTE" ColumnName="TRANSPORTE_ID_TRANSPORTE" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="CONTRATO">
+      <EntityTypeMapping TypeName="Model.CONTRATO">
+        <MappingFragment StoreEntitySet="CONTRATO">
+          <ScalarProperty Name="ID_CONTRATO" ColumnName="ID_CONTRATO" />
+          <ScalarProperty Name="FECHA_INICIO_CONTRATO" ColumnName="FECHA_INICIO_CONTRATO" />
+          <ScalarProperty Name="FECHA_TERMINO_CONTRATO" ColumnName="FECHA_TERMINO_CONTRATO" />
+          <ScalarProperty Name="PROVEEDOR_ID_PROVEEDOR" ColumnName="PROVEEDOR_ID_PROVEEDOR" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="CUENTA_USUARIO">
+      <EntityTypeMapping TypeName="Model.CUENTA_USUARIO">
+        <MappingFragment StoreEntitySet="CUENTA_USUARIO">
+          <ScalarProperty Name="ID_CUENTA_USUARIO" ColumnName="ID_CUENTA_USUARIO" />
+          <ScalarProperty Name="EMAIL_USUARIO" ColumnName="EMAIL_USUARIO" />
+          <ScalarProperty Name="PASSWORD_USUARIO" ColumnName="PASSWORD_USUARIO" />
+          <ScalarProperty Name="FECHA_CREACION" ColumnName="FECHA_CREACION" />
+          <ScalarProperty Name="TIPO_USUARIO_ID_TIPO_USUARIO" ColumnName="TIPO_USUARIO_ID_TIPO_USUARIO" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="DEPARTAMENTO">
+      <EntityTypeMapping TypeName="Model.DEPARTAMENTO">
+        <MappingFragment StoreEntitySet="DEPARTAMENTO">
+          <ScalarProperty Name="ID_DEPARTAMENTO" ColumnName="ID_DEPARTAMENTO" />
+          <ScalarProperty Name="DIRECCION" ColumnName="DIRECCION" />
+          <ScalarProperty Name="COSTO_DEPARTAMENTO" ColumnName="COSTO_DEPARTAMENTO" />
+          <ScalarProperty Name="ESTADO_DEPARTAMENTO" ColumnName="ESTADO_DEPARTAMENTO" />
+          <ScalarProperty Name="DESCRIPCION_ESTADO_DEPARTAMENTO" ColumnName="DESCRIPCION_ESTADO_DEPARTAMENTO" />
+          <ScalarProperty Name="ORIENTACION_DEPARTAMENTO" ColumnName="ORIENTACION_DEPARTAMENTO" />
+          <ScalarProperty Name="ESTACIONAMIENTO" ColumnName="ESTACIONAMIENTO" />
+          <ScalarProperty Name="NUM_HABITACIONES" ColumnName="NUM_HABITACIONES" />
+          <ScalarProperty Name="NUM_BAÑO" ColumnName="NUM_BAÑO" />
+          <ScalarProperty Name="NUM_ESTACIONAMIENTO" ColumnName="NUM_ESTACIONAMIENTO" />
+          <ScalarProperty Name="COMUNA_ID_COMUNA" ColumnName="COMUNA_ID_COMUNA" />
+          <ScalarProperty Name="COMUNA_PROVINCIA_ID_PROVINCIA" ColumnName="COMUNA_PROVINCIA_ID_PROVINCIA" />
+          <ScalarProperty Name="COMUNA_PROVINCIA_REGION_ID_REGION" ColumnName="COMUNA_PROVINCIA_REGION_ID_REGION" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="DETALLE_ACOMPAÑANTE">
+      <EntityTypeMapping TypeName="Model.DETALLE_ACOMPAÑANTE">
+        <MappingFragment StoreEntitySet="DETALLE_ACOMPAÑANTE">
+          <ScalarProperty Name="ID_DETALLE_ACOMPAÑANTE" ColumnName="ID_DETALLE_ACOMPAÑANTE" />
+          <ScalarProperty Name="ACOMPAÑANTE_ID_ACOMPAÑANTE" ColumnName="ACOMPAÑANTE_ID_ACOMPAÑANTE" />
+          <ScalarProperty Name="USUARIO_RUT_USUARIO" ColumnName="USUARIO_RUT_USUARIO" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="DETALLE_CHECKOUT">
+      <EntityTypeMapping TypeName="Model.DETALLE_CHECKOUT">
+        <MappingFragment StoreEntitySet="DETALLE_CHECKOUT">
+          <ScalarProperty Name="ID_DETALLE_CHECKOUT" ColumnName="ID_DETALLE_CHECKOUT" />
+          <ScalarProperty Name="RESERVA_ID_RESERVA" ColumnName="RESERVA_ID_RESERVA" />
+          <ScalarProperty Name="CHECK_OUT_ID_CHECK_OUT" ColumnName="CHECK_OUT_ID_CHECK_OUT" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="DETALLE_IMPUESTO">
+      <EntityTypeMapping TypeName="Model.DETALLE_IMPUESTO">
+        <MappingFragment StoreEntitySet="DETALLE_IMPUESTO">
+          <ScalarProperty Name="ID_DETALLE_IMPUESTO" ColumnName="ID_DETALLE_IMPUESTO" />
+          <ScalarProperty Name="IMPUESTO_ID_IMPUESTO" ColumnName="IMPUESTO_ID_IMPUESTO" />
+          <ScalarProperty Name="DEPARTAMENTO_ID_DEPARTAMENTO" ColumnName="DEPARTAMENTO_ID_DEPARTAMENTO" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="DETALLE_INVENTARIO">
+      <EntityTypeMapping TypeName="Model.DETALLE_INVENTARIO">
+        <MappingFragment StoreEntitySet="DETALLE_INVENTARIO">
+          <ScalarProperty Name="ID_DETALLE_INVENTARIO" ColumnName="ID_DETALLE_INVENTARIO" />
+          <ScalarProperty Name="OBJETO_HABITACION_ID_OBJETO_HABITACION" ColumnName="OBJETO_HABITACION_ID_OBJETO_HABITACION" />
+          <ScalarProperty Name="DEPARTAMENTO_ID_DEPARTAMENTO" ColumnName="DEPARTAMENTO_ID_DEPARTAMENTO" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="DETALLE_MANTENCION">
+      <EntityTypeMapping TypeName="Model.DETALLE_MANTENCION">
+        <MappingFragment StoreEntitySet="DETALLE_MANTENCION">
+          <ScalarProperty Name="ID_DETALLE_MANTENCION" ColumnName="ID_DETALLE_MANTENCION" />
+          <ScalarProperty Name="MANTENCION_ID_MANTENCION" ColumnName="MANTENCION_ID_MANTENCION" />
+          <ScalarProperty Name="DEPARTAMENTO_ID_DEPARTAMENTO" ColumnName="DEPARTAMENTO_ID_DEPARTAMENTO" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="DETALLE_RESERVA">
+      <EntityTypeMapping TypeName="Model.DETALLE_RESERVA">
+        <MappingFragment StoreEntitySet="DETALLE_RESERVA">
+          <ScalarProperty Name="ID_DETALLE_RESERVA" ColumnName="ID_DETALLE_RESERVA" />
+          <ScalarProperty Name="RESERVA_ID_RESERVA" ColumnName="RESERVA_ID_RESERVA" />
+          <ScalarProperty Name="DEPARTAMENTO_ID_DEPARTAMENTO" ColumnName="DEPARTAMENTO_ID_DEPARTAMENTO" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="DETALLE_SERVICIO_EXTRA">
+      <EntityTypeMapping TypeName="Model.DETALLE_SERVICIO_EXTRA">
+        <MappingFragment StoreEntitySet="DETALLE_SERVICIO_EXTRA">
+          <ScalarProperty Name="ID_DETALLE_SERVICIO_EXTRA" ColumnName="ID_DETALLE_SERVICIO_EXTRA" />
+          <ScalarProperty Name="SERVICIO_ID_SERVICIO" ColumnName="SERVICIO_ID_SERVICIO" />
+          <ScalarProperty Name="SERVICIO_CONTRATO_ID_CONTRATO" ColumnName="SERVICIO_CONTRATO_ID_CONTRATO" />
+          <ScalarProperty Name="SERVICIO_CONTRATO_PROVEEDOR_ID_PROVEEDOR" ColumnName="SERVICIO_CONTRATO_PROVEEDOR_ID_PROVEEDOR" />
+          <ScalarProperty Name="RESERVA_ID_RESERVA" ColumnName="RESERVA_ID_RESERVA" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="DETALLE_TOUR">
+      <EntityTypeMapping TypeName="Model.DETALLE_TOUR">
+        <MappingFragment StoreEntitySet="DETALLE_TOUR">
+          <ScalarProperty Name="ID_DETALLE_TOUR" ColumnName="ID_DETALLE_TOUR" />
+          <ScalarProperty Name="RESERVA_ID_RESERVA" ColumnName="RESERVA_ID_RESERVA" />
+          <ScalarProperty Name="TOUR_ID_TOUR" ColumnName="TOUR_ID_TOUR" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ESTADO_PAGO">
+      <EntityTypeMapping TypeName="Model.ESTADO_PAGO">
+        <MappingFragment StoreEntitySet="ESTADO_PAGO">
+          <ScalarProperty Name="ID_ESTADO_PAGO" ColumnName="ID_ESTADO_PAGO" />
+          <ScalarProperty Name="ESTADO_PAGO1" ColumnName="ESTADO_PAGO" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="IMPUESTO">
+      <EntityTypeMapping TypeName="Model.IMPUESTO">
+        <MappingFragment StoreEntitySet="IMPUESTO">
+          <ScalarProperty Name="ID_IMPUESTO" ColumnName="ID_IMPUESTO" />
+          <ScalarProperty Name="MONTO_CONTRIBUCION" ColumnName="MONTO_CONTRIBUCION" />
+          <ScalarProperty Name="MONTO_DIVIDENDO" ColumnName="MONTO_DIVIDENDO" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="MANTENCION">
+      <EntityTypeMapping TypeName="Model.MANTENCION">
+        <MappingFragment StoreEntitySet="MANTENCION">
+          <ScalarProperty Name="ID_MANTENCION" ColumnName="ID_MANTENCION" />
+          <ScalarProperty Name="FECHA_INICIO_MANTENCION" ColumnName="FECHA_INICIO_MANTENCION" />
+          <ScalarProperty Name="FECHA_TERMINO_MANTENCION" ColumnName="FECHA_TERMINO_MANTENCION" />
+          <ScalarProperty Name="COSTO_MANTENCION" ColumnName="COSTO_MANTENCION" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="OBJETO_HABITACION">
+      <EntityTypeMapping TypeName="Model.OBJETO_HABITACION">
+        <MappingFragment StoreEntitySet="OBJETO_HABITACION">
+          <ScalarProperty Name="ID_OBJETO_HABITACION" ColumnName="ID_OBJETO_HABITACION" />
+          <ScalarProperty Name="NOMBRE_OBJETO" ColumnName="NOMBRE_OBJETO" />
+          <ScalarProperty Name="integer" ColumnName="integer" />
+          <ScalarProperty Name="CATEGORIA_OBJETO" ColumnName="CATEGORIA_OBJETO" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="PAGO">
+      <EntityTypeMapping TypeName="Model.PAGO">
+        <MappingFragment StoreEntitySet="PAGO">
+          <ScalarProperty Name="ID_PAGO" ColumnName="ID_PAGO" />
+          <ScalarProperty Name="FORMA_PAGO" ColumnName="FORMA_PAGO" />
+          <ScalarProperty Name="MONTO_PAGO" ColumnName="MONTO_PAGO" />
+          <ScalarProperty Name="FECHA_PAGO" ColumnName="FECHA_PAGO" />
+          <ScalarProperty Name="ESTADO_PAGO_ID_ESTADO_PAGO" ColumnName="ESTADO_PAGO_ID_ESTADO_PAGO" />
+          <ScalarProperty Name="RESERVA_ID_RESERVA" ColumnName="RESERVA_ID_RESERVA" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="PROVEEDOR">
+      <EntityTypeMapping TypeName="Model.PROVEEDOR">
+        <MappingFragment StoreEntitySet="PROVEEDOR">
+          <ScalarProperty Name="ID_PROVEEDOR" ColumnName="ID_PROVEEDOR" />
+          <ScalarProperty Name="NOMBRE_PROVEEDOR" ColumnName="NOMBRE_PROVEEDOR" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="PROVINCIA">
+      <EntityTypeMapping TypeName="Model.PROVINCIA">
+        <MappingFragment StoreEntitySet="PROVINCIA">
+          <ScalarProperty Name="ID_PROVINCIA" ColumnName="ID_PROVINCIA" />
+          <ScalarProperty Name="NOMBRE_PROVINCIA" ColumnName="NOMBRE_PROVINCIA" />
+          <ScalarProperty Name="REGION_ID_REGION" ColumnName="REGION_ID_REGION" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="REGION">
+      <EntityTypeMapping TypeName="Model.REGION">
+        <MappingFragment StoreEntitySet="REGION">
+          <ScalarProperty Name="ID_REGION" ColumnName="ID_REGION" />
+          <ScalarProperty Name="NOMBRE_REGION" ColumnName="NOMBRE_REGION" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="RESERVA">
+      <EntityTypeMapping TypeName="Model.RESERVA">
+        <MappingFragment StoreEntitySet="RESERVA">
+          <ScalarProperty Name="ID_RESERVA" ColumnName="ID_RESERVA" />
+          <ScalarProperty Name="FECHA_ENTRADA" ColumnName="FECHA_ENTRADA" />
+          <ScalarProperty Name="FECHA_SALIDA" ColumnName="FECHA_SALIDA" />
+          <ScalarProperty Name="FIRMA_CONFORMIDAD_CLIENTE" ColumnName="FIRMA_CONFORMIDAD_CLIENTE" />
+          <ScalarProperty Name="USUARIO_ID_USUARIO" ColumnName="USUARIO_ID_USUARIO" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="SERVICIO">
+      <EntityTypeMapping TypeName="Model.SERVICIO">
+        <MappingFragment StoreEntitySet="SERVICIO">
+          <ScalarProperty Name="ID_SERVICIO" ColumnName="ID_SERVICIO" />
+          <ScalarProperty Name="NOMBRE_SERVICIO" ColumnName="NOMBRE_SERVICIO" />
+          <ScalarProperty Name="FECHA_SERVICIO" ColumnName="FECHA_SERVICIO" />
+          <ScalarProperty Name="CONTRATO_ID_CONTRATO" ColumnName="CONTRATO_ID_CONTRATO" />
+          <ScalarProperty Name="CONTRATO_PROVEEDOR_ID_PROVEEDOR" ColumnName="CONTRATO_PROVEEDOR_ID_PROVEEDOR" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TIPO_USUARIO">
+      <EntityTypeMapping TypeName="Model.TIPO_USUARIO">
+        <MappingFragment StoreEntitySet="TIPO_USUARIO">
+          <ScalarProperty Name="ID_TIPO_USUARIO" ColumnName="ID_TIPO_USUARIO" />
+          <ScalarProperty Name="NOMBRE_TIPO_USUARIO" ColumnName="NOMBRE_TIPO_USUARIO" />
+          <ScalarProperty Name="TIPO_PERFIL" ColumnName="TIPO_PERFIL" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TOUR">
+      <EntityTypeMapping TypeName="Model.TOUR">
+        <MappingFragment StoreEntitySet="TOUR">
+          <ScalarProperty Name="ID_TOUR" ColumnName="ID_TOUR" />
+          <ScalarProperty Name="NOMBRE_TOUR" ColumnName="NOMBRE_TOUR" />
+          <ScalarProperty Name="FECHA_TOUR" ColumnName="FECHA_TOUR" />
+          <ScalarProperty Name="COSTO_TOUR" ColumnName="COSTO_TOUR" />
+          <ScalarProperty Name="DESCRIPCION_TOUR" ColumnName="DESCRIPCION_TOUR" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TRANSPORTE">
+      <EntityTypeMapping TypeName="Model.TRANSPORTE">
+        <MappingFragment StoreEntitySet="TRANSPORTE">
+          <ScalarProperty Name="ID_TRANSPORTE" ColumnName="ID_TRANSPORTE" />
+          <ScalarProperty Name="LUGAR_RECOGIDA" ColumnName="LUGAR_RECOGIDA" />
+          <ScalarProperty Name="FECHA_RECOGIDA" ColumnName="FECHA_RECOGIDA" />
+          <ScalarProperty Name="RESERVA_ID_RESERVA" ColumnName="RESERVA_ID_RESERVA" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="USUARIO">
+      <EntityTypeMapping TypeName="Model.USUARIO">
+        <MappingFragment StoreEntitySet="USUARIO">
+          <ScalarProperty Name="RUT_USUARIO" ColumnName="RUT_USUARIO" />
+          <ScalarProperty Name="NOMBRE" ColumnName="NOMBRE" />
+          <ScalarProperty Name="APELLIDO" ColumnName="APELLIDO" />
+          <ScalarProperty Name="EMAIL" ColumnName="EMAIL" />
+          <ScalarProperty Name="DIRECCION" ColumnName="DIRECCION" />
+          <ScalarProperty Name="TELEFONO" ColumnName="TELEFONO" />
+          <ScalarProperty Name="CUENTA_USUARIO_ID_CUENTA_USUARIO" ColumnName="CUENTA_USUARIO_ID_CUENTA_USUARIO" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="VEHICULO">
+      <EntityTypeMapping TypeName="Model.VEHICULO">
+        <MappingFragment StoreEntitySet="VEHICULO">
+          <ScalarProperty Name="PATENTE" ColumnName="PATENTE" />
+          <ScalarProperty Name="MARCA" ColumnName="MARCA" />
+          <ScalarProperty Name="MODELO" ColumnName="MODELO" />
+          <ScalarProperty Name="CONDUCTOR_RUT_CONDUCTOR" ColumnName="CONDUCTOR_RUT_CONDUCTOR" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <FunctionImportMapping FunctionImportName="SP_CREATE_RESERVA" FunctionName="Model.Store.SP_CREATE_RESERVA" />
+    <FunctionImportMapping FunctionImportName="SP_CREATE_USUARIO" FunctionName="Model.Store.SP_CREATE_USUARIO" />
+    <FunctionImportMapping FunctionImportName="SP_DELETE_RESERVA" FunctionName="Model.Store.SP_DELETE_RESERVA" />
+    <FunctionImportMapping FunctionImportName="SP_UPDATE_RESERVA" FunctionName="Model.Store.SP_UPDATE_RESERVA" />
+    <FunctionImportMapping FunctionImportName="SP_UPDATE_USUARIO" FunctionName="Model.Store.SP_UPDATE_USUARIO" />
+  </EntityContainerMapping>
+</Mapping>

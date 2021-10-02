@@ -1,0 +1,28 @@
+﻿@using TurismoReal.Negocio;
+
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Listado de Reservas</h2>
+
+@{ List<Reserva> reservas = (List<Reserva>)ViewBag.reservas;}
+
+<table>
+    <tr>
+        <th>Fecha entrada</th>
+        <th>Fecha salida</th>
+        <th>Firma conformidad cliente</th>
+        <th>Usuario</th>
+    </tr>
+    @foreach(var reserva in reservas)
+    {
+        <tr>
+            <td>@reserva.fecha_entrada</td>
+            <td>@reserva.fecha_salida</td>
+            <td>@reserva.firma_conformidad_cliente</td>
+            <td>@reserva.Usuario.nombre</td>
+        </tr>
+    }
+</table>
