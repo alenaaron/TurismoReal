@@ -1,0 +1,10 @@
+C:\Users\thoma\source\repos\TurismoRealWeb\TurismoRealWeb.DALC\bin\Debug\TurismoRealWeb.DALC.dll.config
+C:\Users\thoma\source\repos\TurismoRealWeb\TurismoRealWeb.DALC\bin\Debug\TurismoRealWeb.DALC.dll
+C:\Users\thoma\source\repos\TurismoRealWeb\TurismoRealWeb.DALC\bin\Debug\TurismoRealWeb.DALC.pdb
+C:\Users\thoma\source\repos\TurismoRealWeb\TurismoRealWeb.DALC\bin\Debug\EntityFramework.dll
+C:\Users\thoma\source\repos\TurismoRealWeb\TurismoRealWeb.DALC\bin\Debug\EntityFramework.xml
+C:\Users\thoma\source\repos\TurismoRealWeb\TurismoRealWeb.DALC\obj\Debug\TurismoRealWeb.DALC.csprojAssemblyReference.cache
+C:\Users\thoma\source\repos\TurismoRealWeb\TurismoRealWeb.DALC\obj\Debug\TurismoRealWeb.DALC.csproj.CoreCompileInputs.cache
+C:\Users\thoma\source\repos\TurismoRealWeb\TurismoRealWeb.DALC\obj\Debug\TurismoRealWeb.DALC.csproj.CopyComplete
+C:\Users\thoma\source\repos\TurismoRealWeb\TurismoRealWeb.DALC\obj\Debug\TurismoRealWeb.DALC.dll
+C:\Users\thoma\source\repos\TurismoRealWeb\TurismoRealWeb.DALC\obj\Debug\TurismoRealWeb.DALC.pdb

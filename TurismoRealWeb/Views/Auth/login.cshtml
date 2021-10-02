@@ -1,0 +1,18 @@
+﻿@model TurismoRealWeb.Negocio.CuentaUsuario
+@{
+    ViewBag.Title = "Login";
+}
+
+<h2>Login</h2>
+@using (Html.BeginForm())
+{
+    @Html.LabelFor(u => u.emailUsuario, "Correo Electronico")
+    @Html.TextBoxFor(u => u.emailUsuario, new { type = "email" })
+    <br>
+    @Html.LabelFor(u => u.passwordUsuario, "contraseña")
+    @Html.PasswordFor(u => u.passwordUsuario)
+    <br>
+    <button>Ingresar</button>
+}
+
+@TempData["email o contraseña incorrecta"]

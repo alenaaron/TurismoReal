@@ -1,0 +1,35 @@
+﻿
+@model TurismoRealWeb.Negocio.Usuario
+@{
+    ViewBag.Title = "Create";
+}
+
+<h2>Agregar nuevo registro</h2>
+@using (Html.BeginForm())
+{
+    @Html.LabelFor(p => p.cuentaUsuario.emailUsuario)
+    @Html.TextBoxFor(p => p.cuentaUsuario.emailUsuario)
+    <br>
+    @Html.LabelFor(p => p.cuentaUsuario.passwordUsuario)
+    @Html.TextBoxFor(p => p.cuentaUsuario.passwordUsuario)
+    <br>
+    @Html.LabelFor(p => p.rutUsuario)
+    @Html.TextBoxFor(p => p.rutUsuario)
+    <br>
+    @Html.LabelFor(p => p.nombre)
+    @Html.TextBoxFor(p => p.nombre)
+    <br>
+    @Html.LabelFor(p => p.apellido)
+    @Html.TextBoxFor(p => p.apellido)
+    <br>
+    @Html.LabelFor(p => p.direccion)
+    @Html.TextBoxFor(p => p.direccion)
+    <br>
+    @Html.LabelFor(p => p.telefono)
+    @Html.TextBoxFor(p => p.telefono)
+    <br>
+    <button>Registrarme</button>
+
+    @TempData["mensaje"]
+}
+
